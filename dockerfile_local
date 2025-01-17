@@ -39,6 +39,11 @@
 #
 # cd /app && mix phx.new --no-ecto $APP_NAME
 
+# IMPORTANT: To work on a docker network, we need to change dev.exs as follows to have 0.0.0.0 be listening instead of 127 etc. 
+# NOTE: This is needed to get the docker connection working for local development!
+#  http: [ip: {0, 0, 0, 0}, port: 4000],
+
+# OLD VERSIONS required this step, current phoenix may no longer?
 # install dependencies and build weback
 # cd assets && npm install && node node_modules/webpack/bin/webpack.js --mode development
 
