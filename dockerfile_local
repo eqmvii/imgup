@@ -1,0 +1,55 @@
+# Testing Commands
+
+# Build it:
+
+# docker build -t imgup_local_v1 -f dockerfile_local .
+
+# Do a quick test via just a bash prompt:
+
+# docker run --rm -it imgup_local_v1 /bin/bash
+
+# Elixir bootstrapping notes:
+
+# mix archive.install hex phx_new
+# mix phx.new no_ecto_test --no-ecto 
+# cd no_ecto_test
+# mix phx.server
+
+# run it with ports mapped, something like:
+# docker run -d -it -p 8000:4000 --mount type=bind,source="$(pwd)",target=/app imgup_local_v1
+
+
+FROM elixir:latest
+
+# Install elixir/phoenix related dependencies
+RUN apt-get update && \
+    apt-get install -y \
+    build-essential \
+    inotify-tools \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install Hex and Rebar
+RUN mix local.hex --force && \
+    mix local.rebar --force
+
+# Set working directory
+WORKDIR /app
+
+# Copy the application files to the working directory
+COPY . .
+
+# Install Elixir dependencies
+# RUN mix deps.get
+
+# Compile the application
+# RUN mix compile
+
+# Expose the port Phoenix will run on
+EXPOSE 4000
+
+# Set the default command to run the Phoenix server
+# CMD ["mix", "phx.server"]
+
+# Run the container with bash to bootstrap things
+CMD ["/bin/bash"]
