@@ -1,0 +1,30 @@
+services:
+  imgup_server:
+    image: imgup_local_v1
+    ports:
+    - "8000:4000"
+    # http://localhost:8000/ on local machine to see the port 4000 exposed from the container's phoenix app
+    # maps the current working director to the /app directory within the container, that hold the Phoenix app
+    volumes:
+    - .:/app
+  # boilerplate code from old app 
+  # bizarro_webapp:
+  #   image: lvtest0.4
+  #   ports:
+  #   - "8001:4000"
+  #   volumes:
+  #   - .:/app
+  # redis:
+  #   image: "redis:alpine"
+
+###############
+# Usage Notes #
+###############
+
+# docker-compose up -d
+
+# docker-compose down
+
+# docker logs --follow $CONTAINER_NAME
+
+# docker exec -it $CONTAINER_NAME bash

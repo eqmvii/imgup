@@ -3,6 +3,7 @@
 v1
 
 * containerized elixir app
+    * JS broken? Empty response or something at this stage, but the app is in the container and runs and the port is theoretically mapped!
 * docker-compose
 * file upload HTML page / widget / API route that at least logs file received 
 * terraform to create s3 bucket
