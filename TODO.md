@@ -2,11 +2,8 @@
 
 v1
 
-* containerized elixir app
-    * JS broken? Empty response or something at this stage, but the app is in the container and runs and the port is theoretically mapped!
-* docker-compose
+* Set ACLs etc. needed for S3 bucket via terraform to upload (private from this app) and view (public for uploads)
 * file upload HTML page / widget / API route that at least logs file received 
-* terraform to create s3 bucket
 * hook up aws and phoenix container locally to handle upload 
 
 v2 
@@ -21,3 +18,4 @@ v2
 * dynamodb
 * public internet infra (load balancer etc.)
 * DataDog 
+* Remote state 

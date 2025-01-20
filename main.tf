@@ -14,15 +14,15 @@ provider "aws" {
 }
 
 # Boilerplate tutorial code, for testing terraform / aws connectivity
-resource "aws_instance" "app_server" {
-  ami           = "ami-0df8c184d5f6ae949" # Amazon Linux, free tier, us-east-1 from AMI catalogue in EC2 page
-  instance_type = "t2.micro"
+# resource "aws_instance" "app_server" {
+#   ami           = "ami-0df8c184d5f6ae949" # Amazon Linux, free tier, us-east-1 from AMI catalogue in EC2 page
+#   instance_type = "t2.micro"
 
-  tags = {
-    # to override via commandline: terraform apply -var "instance_name=YetAnotherName"
-    Name = var.instance_name
-  }
-}
+#   tags = {
+#     # to override via commandline: terraform apply -var "instance_name=YetAnotherName"
+#     Name = var.instance_name
+#   }
+# }
 
 
 # Bucket for uploading images
