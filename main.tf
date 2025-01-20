@@ -41,3 +41,16 @@ resource "aws_s3_bucket" "imgup-uploads" {
     enabled = false
   }
 }
+
+# Hello World image for that bucket for testing
+resource "aws_s3_object" "hello_world_image" {
+  bucket = "imgup-uploads"
+  key    = "hello_world"
+  source = "hello_world.jpg"
+
+  # (Optional) Triggers updates when the value changes. The only meaningful value is filemd5("path/to/file")
+  # The filemd5() function is available in Terraform 0.11.12 and later
+  # For Terraform 0.11.11 and earlier, use the md5() function and the file() function:
+  # etag = "${md5(file("path/to/file"))}"
+  # etag = filemd5("path/to/file")
+}
