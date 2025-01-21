@@ -83,3 +83,6 @@ override.tf.json
 # Ignore CLI configuration files
 .terraformrc
 terraform.rc
+
+# from Eric - ignore TF files in this folder entirely
+/private_tf

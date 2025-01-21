@@ -24,10 +24,14 @@ provider "aws" {
 #   }
 # }
 
+module "private_tf" {
+  source = "./private_tf"
+}
+
 
 # Bucket for uploading images
 resource "aws_s3_bucket" "imgup-uploads" {
-  bucket = "imgup-uploads"
+  bucket = module.private_tf.imgup_s3_bucket_output
   acl    = "private" # TODO change / analyze. Setting to public throws the error "Error: creating Amazon S3 (Simple Storage) Bucket (imgup-uploads): InvalidBucketAclWithObjectOwnership: Bucket cannot have ACLs set with ObjectOwnership's BucketOwnerEnforced setting"
   # policy 
 
@@ -43,8 +47,9 @@ resource "aws_s3_bucket" "imgup-uploads" {
 }
 
 # Hello World image for that bucket for testing
+# This failed the first time, a second apply got it - need some explicit dependency on the bucket or something?
 resource "aws_s3_object" "hello_world_image" {
-  bucket = "imgup-uploads"
+  bucket = module.private_tf.imgup_s3_bucket_output
   key    = "hello_world"
   source = "hello_world.jpg"
 
