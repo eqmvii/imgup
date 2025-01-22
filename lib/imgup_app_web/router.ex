@@ -6,7 +6,8 @@ defmodule ImgupAppWeb.Router do
     plug :fetch_session
     plug :fetch_live_flash
     plug :put_root_layout, html: {ImgupAppWeb.Layouts, :root}
-    plug :protect_from_forgery
+    # TODO ERIC: Fight with how to submit a CSRF token later...
+    # plug :protect_from_forgery
     plug :put_secure_browser_headers
   end
 
@@ -18,6 +19,9 @@ defmodule ImgupAppWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
+
+    # Testing file upload
+    post "/upload", UploadController, :upload
   end
 
   # Other scopes may use custom stacks.

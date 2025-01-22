@@ -3,8 +3,8 @@
 v1
 
 * Set ACLs etc. needed for S3 bucket via terraform to upload (private from this app) and view (public for uploads)
-* file upload HTML page / widget / API route that at least logs file received 
 * hook up aws and phoenix container locally to handle upload 
+* Handle all TODO ERIC 
 
 v2 
 
