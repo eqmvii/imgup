@@ -3,7 +3,7 @@ defmodule ImgupAppWeb.UploadController do
 
   def upload(conn, %{"file" => upload} = params) do
     # Randomly test ex aws functionality via listing s3 objects in test bucket
-    raise inspect ExAws.S3.list_objects("") |> ExAws.request()
+    raise inspect ExAws.S3.list_objects(System.get_env("IMGUP_BUCKET_NAME")) |> ExAws.request()
 
     # Extract file information for debugging during testing
     %Plug.Upload{filename: filename, path: path, content_type: content_type} = upload

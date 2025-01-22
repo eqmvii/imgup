@@ -57,7 +57,10 @@ defmodule ImgupApp.MixProject do
       {:bandit, "~> 1.5"},
       # fresh app generated above, my additions below
       {:ex_aws, "~> 2.5"},
-      {:ex_aws_s3, "~> 2.5"}
+      {:ex_aws_s3, "~> 2.5"},
+      {:hackney, "~> 1.20"}, # HTTP request library needed for ex_aws, set to current version today
+      {:sweet_xml, "~> 0.7.5"} # XML parser needed for ex_aws, set to current version today
+
     ]
   end
 
