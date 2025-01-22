@@ -7,6 +7,10 @@ services:
     # maps the current working director to the /app directory within the container, that hold the Phoenix app
     volumes:
     - .:/app
+    environment:
+      # loaded from .env file in this directory but excluded from .gitignore 
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
   # boilerplate code from old app 
   # bizarro_webapp:
   #   image: lvtest0.4

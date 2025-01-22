@@ -54,7 +54,10 @@ defmodule ImgupApp.MixProject do
       {:gettext, "~> 0.26"},
       {:jason, "~> 1.2"},
       {:dns_cluster, "~> 0.1.1"},
-      {:bandit, "~> 1.5"}
+      {:bandit, "~> 1.5"},
+      # fresh app generated above, my additions below
+      {:ex_aws, "~> 2.5"},
+      {:ex_aws_s3, "~> 2.5"}
     ]
   end
 

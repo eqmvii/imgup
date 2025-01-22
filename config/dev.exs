@@ -74,3 +74,9 @@ config :phoenix_live_view,
 
 # Disable swoosh api client as it is only required for production adapters.
 config :swoosh, :api_client, false
+
+# ex_aws is configured by default doing something like the following:
+# config :ex_aws,
+#   access_key_id: [{:system, "AWS_ACCESS_KEY_ID"}, :instance_role],
+#   secret_access_key: [{:system, "AWS_SECRET_ACCESS_KEY"}, :instance_role]
+# so exporting those in .env should do the trick locally!
