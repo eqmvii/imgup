@@ -28,6 +28,9 @@ module "private_tf" {
   source = "./private_tf"
 }
 
+##############
+# S3 Buckets #
+##############
 
 # Bucket for uploading images
 resource "aws_s3_bucket" "imgup-uploads" {
@@ -44,6 +47,34 @@ resource "aws_s3_bucket" "imgup-uploads" {
   versioning {
     enabled = false
   }
+}
+
+# Allow public read
+
+resource "aws_s3_bucket_policy" "public_read_policy" {
+  bucket = module.private_tf.imgup_s3_bucket_output
+
+  policy = jsonencode({
+    Version = "2012-10-17",
+    Statement = [
+      {
+        Sid       = "PublicReadGetObject",
+        Effect    = "Allow",
+        Principal = "*",
+        Action    = "s3:GetObject",
+        Resource  = "arn:aws:s3:::${module.private_tf.imgup_s3_bucket_output}/*"
+      }
+    ]
+  })
+}
+
+resource "aws_s3_bucket_public_access_block" "disable_block" {
+  bucket = module.private_tf.imgup_s3_bucket_output
+
+  block_public_acls       = false
+  block_public_policy     = false
+  ignore_public_acls      = false
+  restrict_public_buckets = false
 }
 
 # Hello World image for that bucket for testing
