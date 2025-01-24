@@ -28,13 +28,18 @@ defmodule ImgupAppWeb.UploadController do
     IO.puts("Path: #{path}\n")
     IO.puts("Content type: #{content_type}\n")
 
+
+    bucket_name = System.get_env("IMGUP_BUCKET_NAME")
+    region = System.get_env("AWS_REGION")
+    s3_image_url = "https://#{bucket_name}.s3.#{region}.amazonaws.com/#{s3_key}"
+
     conn
     |> put_flash(:info, "File #{filename} uploaded successfully!")
     # redirect(conn, to: Routes.image_path(conn, :display, image_url: image_url))
     # |> redirect(to: "/behold")
     # |> redirect(to: ImgupAppWeb.Router.Helpers.page_path(conn, :behold, image_url: s3_key))
     # TODO ERIC route this better
-    |> redirect(to: "/behold?image_url=#{s3_key}")
+    |> redirect(to: "/behold?image_url=#{s3_image_url}")
   end
 
   ###################
