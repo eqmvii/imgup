@@ -22,6 +22,7 @@ defmodule ImgupAppWeb.Router do
 
     # Testing file upload
     post "/upload", UploadController, :upload
+    get "/behold", PageController, :behold
   end
 
   # Other scopes may use custom stacks.
