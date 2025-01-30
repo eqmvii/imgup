@@ -2,10 +2,10 @@
 
 v1
 
-* Set ACLs etc. needed for S3 bucket via terraform to upload (private from this app) and view (public for uploads)
-* do upload
 * Handle all TODO ERIC (incl. CSRF)
 * add route for image testing
+* RDS
+* 
 
 v2 
 
@@ -20,3 +20,4 @@ v2
 * public internet infra (load balancer etc.)
 * DataDog 
 * Remote state 
+* RDS snapshots and recovery
